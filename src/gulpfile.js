@@ -1,4 +1,3 @@
-        
 const {
     src,
     dest,
@@ -8,7 +7,7 @@ const {
 } = require('gulp');
 
 // Load plugins
-
+const phpConnect = require('gulp-connect-php');
 const pugtohtml = require('gulp-pug');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
@@ -18,12 +17,12 @@ const cssnano = require('gulp-cssnano');
 const concat = require('gulp-concat');
 const clean = require('gulp-clean');
 const changed = require('gulp-changed');
-const browsersync = require('browser-sync').create();
+const browsersync = require("browser-sync");
 
 // Clean assets
 
 function clear() {
-    return src('./website/generated/*', {
+    return src('C:/ospanel/domains/optimized.dev/*', {
             read: false
         })
         .pipe(clean());
@@ -41,7 +40,7 @@ function js() {
         .pipe(rename({
             extname: '.min.js'
         }))
-        .pipe(dest('./website/generated/js/'))
+        .pipe(dest('C:/ospanel/domains/optimized.dev/js'))
         .pipe(browsersync.stream());
 }
 
@@ -49,7 +48,7 @@ function js() {
 
 function indexpug() {
     const index_source = 'pug/index.pug';
-    const index_dest = './website/generated/';
+    const index_dest = 'C:/ospanel/domains/optimized.dev';
 
     return src(index_source)
         .pipe(changed(index_source))
@@ -63,7 +62,7 @@ function indexpug() {
 
 function pug() {
     const source = 'pug/pages/*.pug';
-    const destenation  = './website/generated/html';
+    const destenation  = 'C:/ospanel/domains/optimized.dev/html';
 
     return src(source)
         .pipe(changed(source))
@@ -91,7 +90,7 @@ function css() {
             extname: '.min.css'
         }))
         .pipe(cssnano())
-        .pipe(dest('./website/generated/styles/'))
+        .pipe(dest('C:/ospanel/domains/optimized.dev/styles/'))
         .pipe(browsersync.stream());
 }
 
@@ -108,15 +107,32 @@ function watchFiles() {
 
 // BrowserSync
 
+// function connectsync() {
+//     phpConnect.server({
+//         // a standalone PHP server that browsersync connects to via proxy
+//         port: 8000,
+//         keepalive: true,
+//         base: "C:/ospanel/domains/optimized.dev",
+//     }, function (){
+//         browsersync({
+//             proxy: 'optimized.dev'
+//         });
+//     });
+// }
+
+// function browserSyncReload(done) {
+//     browsersync.reload();
+//     done();
+// }
+
 function browserSync() {
     browsersync.init({
-        server: {
-            baseDir: '../website/generated/index.php'
-        },
-        port: 3000
+        proxy: 'optimized.dev',
+        notify: false
     });
+    
 }
 
-exports.watch = parallel(browserSync, watchFiles);
+exports.watch = parallel([watchFiles, browserSync]);
 exports.default = series(clear, parallel(indexpug, pug, css, js));
     

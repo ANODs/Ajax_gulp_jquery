@@ -1,1 +1,0 @@
-<!DOCTYPE html><html><head><title>Детский психолог</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta charset="UTF-8"/></head><body><div class="content"><div id="header"></div><div id="cards"></div><div id="services"></div><div id="about"> </div><div id="callback"></div><div id="footer"></div></div></body></html>
