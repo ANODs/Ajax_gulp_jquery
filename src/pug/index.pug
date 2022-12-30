@@ -3,14 +3,11 @@ html
     include includes/head.pug
     body
         .content
-            | <?php echo "Hello World!";?>
-            a(href="./html/about.html") kuku 
-            a(href="./html/contacts.html") kuku 
-            a(href="./html/offline.html") kuku 
-            a(href="./html/online.html") kuku 
-            include includes/header.pug
-            include includes/cards.pug
-            include includes/services.pug
-            include includes/about.pug
-            include includes/callback.pug
-            include includes/footer.pug
+            include includes/headerNav.pug
+            #content.main
+                include includes/headerMain.pug
+                include includes/cardsMain.pug
+                include includes/servicesMain.pug
+                include includes/aboutMain.pug
+                include includes/callbackMain.pug
+                include includes/footerMain.pug

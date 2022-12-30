@@ -7,7 +7,7 @@ const {
 } = require('gulp');
 
 // Load plugins
-const phpConnect = require('gulp-connect-php');
+
 const pugtohtml = require('gulp-pug');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
@@ -19,10 +19,14 @@ const clean = require('gulp-clean');
 const changed = require('gulp-changed');
 const browsersync = require("browser-sync");
 
+// Destination folder
+
+const dist = 'C:/ospanel/domains/optimized.dev/website';
+
 // Clean assets
 
 function clear() {
-    return src('C:/ospanel/domains/optimized.dev/*', {
+    return src(dist + '/*', {
             read: false
         })
         .pipe(clean());
@@ -32,6 +36,7 @@ function clear() {
 
 function js() {
     const source = 'scripts/*.js';
+    const destination  = dist + '/js';
 
     return src(source)
         .pipe(changed(source))
@@ -40,7 +45,7 @@ function js() {
         .pipe(rename({
             extname: '.min.js'
         }))
-        .pipe(dest('C:/ospanel/domains/optimized.dev/js'))
+        .pipe(dest(destination))
         .pipe(browsersync.stream());
 }
 
@@ -48,13 +53,13 @@ function js() {
 
 function indexpug() {
     const index_source = 'pug/index.pug';
-    const index_dest = 'C:/ospanel/domains/optimized.dev';
+    const index_dest = dist;
 
     return src(index_source)
         .pipe(changed(index_source))
         .pipe(pugtohtml())
         .pipe(rename({
-            extname: '.php'
+            extname: '.html'
         }))
         .pipe(dest(index_dest))
         .pipe(browsersync.stream());
@@ -62,7 +67,7 @@ function indexpug() {
 
 function pug() {
     const source = 'pug/pages/*.pug';
-    const destenation  = 'C:/ospanel/domains/optimized.dev/html';
+    const destination  = dist + '/html';
 
     return src(source)
         .pipe(changed(source))
@@ -70,17 +75,19 @@ function pug() {
         .pipe(rename({
             extname: '.html'
         }))
-        .pipe(dest(destenation))
+        .pipe(dest(destination))
         .pipe(browsersync.stream());
 }
 
 // CSS function 
 
 function css() {
-    const source = 'styles/main.sass';
+    const source = 'styles/*.sass';
+    const destination  = dist + '/styles';
 
     return src(source)
         .pipe(changed(source))
+        .pipe(concat('main.sass'))
         .pipe(sass())
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 2 versions'],
@@ -90,7 +97,19 @@ function css() {
             extname: '.min.css'
         }))
         .pipe(cssnano())
-        .pipe(dest('C:/ospanel/domains/optimized.dev/styles/'))
+        .pipe(dest(destination))
+        .pipe(browsersync.stream());
+}
+
+// Clone assets
+
+function assets(){
+    const source = 'assets/**/*';
+    const destination  = dist + '/assets';
+
+    return src(source)
+        .pipe(changed(source))
+        .pipe(dest(destination))
         .pipe(browsersync.stream());
 }
 
@@ -103,27 +122,10 @@ function watchFiles() {
     watch('pug/includes/*.pug', indexpug);
     watch('pug/pages/*.pug', pug);
     watch('scripts/*', js);
+    watch('assets/**/*', assets);
 }
 
 // BrowserSync
-
-// function connectsync() {
-//     phpConnect.server({
-//         // a standalone PHP server that browsersync connects to via proxy
-//         port: 8000,
-//         keepalive: true,
-//         base: "C:/ospanel/domains/optimized.dev",
-//     }, function (){
-//         browsersync({
-//             proxy: 'optimized.dev'
-//         });
-//     });
-// }
-
-// function browserSyncReload(done) {
-//     browsersync.reload();
-//     done();
-// }
 
 function browserSync() {
     browsersync.init({
@@ -134,5 +136,5 @@ function browserSync() {
 }
 
 exports.watch = parallel([watchFiles, browserSync]);
-exports.default = series(clear, parallel(indexpug, pug, css, js));
+exports.default = series(clear, parallel(indexpug, pug, css, js, assets));
     

@@ -33,6 +33,8 @@
     "sass": "^1.56.2"
   },
   "dependencies": {
-    "gulp-pug": "^5.0.0"
+    "gulp-pug": "^5.0.0",
+    "jquery": "^3.6.3",
+    "owl.carousel": "^2.3.4"
   }
 }

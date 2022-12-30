@@ -1,0 +1,115 @@
+$bcg: #F4F8FB 
+$light: #fff
+$secondary: #8DA5BB
+$accent: #0B50B8
+$dark: #333
+
+//basic settings 
+*, *::after, *::before
+    box-sizing: border-box !important
+    font-family: Montserrat !important
+
+body
+    background: #F4F8FB !important
+    overflow-x: hidden 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+  -webkit-appearance: none
+  margin: 0
+
+::selection
+    background-color: $accent
+    color: $light
+
+
+input[type=number] 
+  -moz-appearance: textfield
+
+a
+    color: $dark
+    text-decoration: none
+
+ul
+    padding: 0
+    margin: 0
+
+li
+    list-style-type: none
+
+h1
+    font-family: Philosopher !important
+    font-size: 60px
+    font-weight: 400
+    line-height: 72px
+    letter-spacing: 0em
+
+
+h2
+    font-family: Philosopher !important
+    font-size: 50px
+    font-weight: 400
+    line-height: 60px
+    letter-spacing: 0em
+
+    
+h3
+    font-family: Philosopher !important
+    font-size: 26px
+    font-weight: 700
+    line-height: 31px
+    letter-spacing: 0em
+    text-align: center
+
+.underline
+    margin: 0
+    color: $secondary
+    font-family: Montserrat
+    font-style: normal
+    font-weight: 400
+    font-size: 18px
+    line-height: 160%
+
+.text
+    font-family: 'Montserrat'
+    font-style: normal
+    font-weight: 400
+    font-size: 16px
+    line-height: 170%
+
+hr
+    background: url('../../website/assets/images/underline.svg')
+    border: none
+    height: 10px
+    background-repeat: no-repeat
+
+h3
+    position: relative
+    hr
+        width: 100%
+        top: 150%
+        transform: translateY(-50%)
+        position: absolute
+        background: url('../../website/assets/images/underline2.svg')
+        border: none
+        height: 10px !important
+        background-repeat: no-repeat
+
+.underline
+    span 
+        padding-left: 2%
+        position: relative
+        &::before
+            left: 98%
+            top: 45%
+            transform: translate(-50%,-50%)
+            content: ''
+            position: absolute
+            width: 200%
+            height: 200%
+            background: url('../../website/assets/images/outline2.svg')
+            background-repeat: no-repeat
+
+.navitem.active
+    img
+        pointer-events: none

@@ -1,0 +1,379 @@
+@import 'variables'
+
+@media screen and (min-width: 1200px)
+    //services
+    #content.offline
+        #header
+            max-width: 1110px
+            position: relative
+            margin: 150px auto 0 auto
+            .btnWrapper
+                grid-area: 3 / 1 / 4 / 6
+                button
+                    margin-top: 70px
+                    font-size: 14px
+                    line-height: 22.4px
+                    border: none
+                    width: 255px
+                    padding: 20px
+                    border-radius: 40px
+                    background: $accent
+                    color: $light
+            .picture
+                height: 720px
+            .picture::before
+                z-index: 0
+                content: ""
+                position: absolute
+                top: 55%
+                left: 105%
+                transform: translate(-50%,-50%)
+                width: 100%
+                height: 100%
+                background: url(../../website/assets/images/outlineHeader.svg)
+                background-repeat: no-repeat                
+        #cards
+            max-width: 1110px
+            position: relative
+            margin: 150px auto 0 auto
+            .card
+                padding: 50px 40px
+                width: 540px
+                height: 440px
+                button
+                    cursor: pointer
+                    bottom: 50px
+                    position: absolute
+                    font-size: 14px
+                    line-height: 22.4px
+                    border: none
+                    width: 255px
+                    padding: 20px
+                    border-radius: 40px
+                    background: $accent
+                    color: $light
+                .discount
+                    pointer-events: none
+                    opacity: 0
+                    text-align: center
+                    line-height: 90px
+                    font-family: 'Philosopher'
+                    font-style: normal
+                    font-weight: 500
+                    font-size: 26px
+                    margin: 0
+                    flex: auto
+                    align-self: auto
+                    color: $light
+                    z-index: 2
+                    top: 0%
+                    left: 100%
+                    transform: translate(calc(-100% - 20px),calc(-50% + 20px))
+                    position: absolute
+                    max-width: 90px
+                    max-height: 90px
+                    width: 100%
+                    height: 100%
+                    content: ''
+                    border-radius: 100%
+                    background: $accent
+                    transition: .3s
+                    pointer-events: none
+                    &::before
+                        pointer-events: none
+                        z-index: 2
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%,-50%)
+                        position: absolute
+                        width: 110px
+                        height: 110px
+                        content: ''
+                        border-radius: 100%
+                        border: 1px solid $accent
+                &:hover
+                    .discount
+                        pointer-events: none
+                        opacity: 1
+                        text-align: center
+                        line-height: 90px
+                        font-family: 'Philosopher'
+                        font-style: normal
+                        font-weight: 500
+                        font-size: 26px
+                        margin: 0
+                        flex: auto
+                        align-self: auto
+                        color: $light
+                        z-index: 2
+                        top: 0%
+                        left: 100%
+                        transform: translate(calc(-100% - 20px),calc(-50% + 20px))
+                        position: absolute
+                        max-width: 90px
+                        max-height: 90px
+                        width: 100%
+                        height: 100%
+                        content: ''
+                        border-radius: 100%
+                        background: $accent
+                        &::before
+                            pointer-events: none
+                            z-index: 2
+                            top: 50%
+                            left: 50%
+                            transform: translate(-50%,-50%)
+                            position: absolute
+                            width: 110px
+                            height: 110px
+                            content: ''
+                            border-radius: 100%
+                            border: 1px solid $accent
+                h3
+                    margin: 0 !important
+                    text-align: left !important
+                    max-width: none !important
+                .text
+                    margin-top: 20px !important
+                .price
+                    margin-top: 50px
+                    .new
+                        display: inline-block
+                        font-family: 'Philosopher' !important
+                        font-style: normal
+                        font-weight: 700
+                        font-size: 40px
+                        line-height: 40px
+                        color: $accent
+                    .old
+                        margin-left: 20px
+                        color: $secondary
+                        display: inline-block
+                        font-family: 'Philosopher' !important
+                        font-weight: 700
+                        font-size: 30px
+                        line-height: 40px
+                        text-align: center
+                        text-decoration-line: line-through
+                &::before 
+                    background-position: 20px 20px !important
+                    background-repeat: no-repeat !important
+                    background: url(../../website/assets/images/outline5.svg) 
+
+        #services
+            max-width: 1110px
+            position: relative
+            margin: 150px auto 0 auto
+            h2
+                margin: 0
+            .plan
+                margin-top: 200px
+                .point
+                    width: 100%
+                    position: relative
+                    margin-top: 100px
+                    position: relative
+                    .text
+                        max-width: 350px
+                        &::after    
+                            z-index: 2
+                            top: -50px
+                            left: 100px
+                            transform: translate(-50%,-50%)
+                            position: absolute
+                            width: 40px
+                            height: 40px
+                            content: ''
+                            border-radius: 100%
+                            background: $accent
+                            &:nth-child(even)
+                                left: 100%
+                        &::before
+                            width: 64px
+                            height: 64px
+                            pointer-events: none
+                            z-index: 2
+                            top: -50px
+                            left: 100px
+                            transform: translate(-50%,-50%)
+                            position: absolute
+                            content: ''
+                            border-radius: 100%
+                            border: 1px solid $accent
+                            &:nth-child(even)
+                                left: 100%
+                            
+                    h3
+                        margin: 100px 0 50px 0
+                        text-align: left
+                    &:nth-child(even)
+                        margin: 0 0 0 auto !important
+                        max-width: 350px
+                        &::before
+                            top: -50px
+                            transform: translateY(-100%)
+                            content: ''
+                            position: absolute
+                            width: 2px
+                            height: 262.5px
+                            background: $accent
+                    &::before
+                        left: 100px
+                        top: -50px
+                        content: ''
+                        position: absolute
+                        width: calc(100% - 350px)
+                        height: 2px
+                        background: $accent
+                    &:nth-child(3)::after
+                        left: 100px
+                        top: -50px
+                        transform: translateY(-100%)
+                        content: ''
+                        position: absolute
+                        width: 2px
+                        height: 262.5px
+                        background: $accent
+                    &:nth-child(1)::after
+                        left: 100px
+                        bottom: -50px
+                        content: ''
+                        position: absolute
+                        width: calc(100% - 350px)
+                        height: 2px
+                        background: $accent
+        #citate
+            max-width: 1110px
+            position: relative
+            margin: 150px auto 0 auto
+            background: $accent
+            box-shadow: 0 0 0 100vmax $accent
+            clip-path: inset(0 -100vmax)
+            height: 542px
+            display: flex
+            flex-wrap: nowrap
+            .marks
+                top: 155px
+                width: 183px
+                height: 153px
+                position: absolute
+            .text
+                margin-top: 20px
+                color: $light
+            .quote
+                margin-top: 270px
+                max-width: 530px
+                font-family: 'Philosopher' !important
+                font-style: normal
+                font-weight: 400
+                font-size: 20px
+                line-height: 140%
+                color: $light
+            .portrait
+                overflow: hidden
+                position: relative
+                margin-left: auto
+                min-width: 50%
+                img
+                    z-index: -2
+                    top: 0
+                    left: 50%
+                    transform: translateX(-50%)
+                    position: absolute
+                    background: #000
+                    &:nth-child(2)
+                        z-index: 2
+                        background: none
+                        transform: translate(calc(-50% + 50px), 30px)
+                &::before
+                    left: -400%
+                    z-index: -1
+                    content: ''
+                    position: absolute
+                    width: 500%
+                    height: 100%
+                    background: rgba(11, 80, 184, 1)
+                    mix-blend-mode: screen
+                    opacity: 1
+
+        #aboutMe
+            max-width: 1110px
+            position: relative
+            margin: 150px auto 0 auto
+            display: flex
+            flex-wrap: nowrap
+            h2
+                margin: 0
+            .underline
+                margin-top: 20px
+            .text
+                position: relative
+                margin: 0 0 0 auto
+                max-width: 540px
+#slider
+    max-width: 1110px
+    position: relative
+    margin: 150px auto 0 auto
+    .item 
+        width: 160px
+        height: 226px
+        background: $light
+    .owl-dots
+        margin-top: 50px !important
+        font-family: 'Montserrat'
+        font-style: normal
+        font-weight: 400
+        font-size: 16px
+        line-height: 170%                 
+        width: 75px
+        position: relative
+        margin: 0 auto
+        display: flex
+        flex-direction: row
+        flex-wrap: nowrap
+        justify-content: space-between
+        align-content: stretch
+        align-items: flex-start
+    .owl-nav
+        line-height: 0px
+        font-size: 0px
+        padding: 0 100px
+        width: 100%
+        color: $accent
+        margin-top: 10px !important
+        position: absolute
+        margin: 0 auto
+        display: flex
+        flex-direction: row
+        flex-wrap: nowrap
+        justify-content: space-between
+        align-content: stretch
+        align-items: flex-start
+        .owl-prev,.owl-next
+            content: ''
+            position: absolute
+            top: 50px
+            left: 10%
+            transform: translate(-50%,-50%)
+            width: 56px
+            height: 30px
+            background: url('../../website/assets/images/arrow.svg')
+            background-repeat: no-repeat
+        .owl-next
+            left: auto
+            right: 10%
+            transform: translate(-50%,-50%) rotateZ(180deg) 
+    .owl-dot
+        color: $secondary
+        &.active
+            color: $accent
+        &:nth-child(1)   
+            span::after
+                content: '1'     
+        &:nth-child(2)   
+            span::after
+                content: '2'  
+        &:nth-child(3)   
+            span::after
+                content: '3'         
+                        

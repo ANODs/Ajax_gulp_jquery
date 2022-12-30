@@ -1,0 +1,116 @@
+@import 'variables'
+
+@media screen and (min-width: 1200px)
+    //about
+    #content.about
+        #header
+            max-height: 780px
+            overflow: hidden
+            .description
+                position: relative
+                top: -25%
+                .underline
+                    vertical-align: top
+                    height: 100%
+                    padding-top: 20px 
+            img:nth-child(2)
+                margin-top: 40px
+                mix-blend-mode: screen
+                position: relative
+                top: -100%
+            .picture
+                margin-top: 40px
+                height: 50%
+                &::after
+
+                    
+                    content: ''
+                    position: absolute
+                    top: 60%
+                    left: 105%
+                    transform: translate(-50%,-50%)
+                    width: 100%
+                    height: 100%
+                    background: url('../../website/assets/images/outlineHeader.svg')
+
+                    background-repeat: no-repeat
+
+        #about
+            margin-top: 120px
+            .topWrapper
+                .text
+                    grid-area: 1 / 1 / 3 / 2
+            .aboutCardsWrapper 
+                .card 
+                    &:nth-child(1)
+                        margin-top: 200px
+                    &:nth-child(2)
+                        margin-top: 200px
+                    &:nth-child(3)
+                        margin-top: 200px
+        #slider
+            max-width: 1110px
+            position: relative
+            margin: 150px auto 0 auto
+            .item 
+                width: 160px
+                height: 226px
+                background: $light
+            .owl-dots
+                margin-top: 50px !important
+                font-family: 'Montserrat'
+                font-style: normal
+                font-weight: 400
+                font-size: 16px
+                line-height: 170%                 
+                width: 75px
+                position: relative
+                margin: 0 auto
+                display: flex
+                flex-direction: row
+                flex-wrap: nowrap
+                justify-content: space-between
+                align-content: stretch
+                align-items: flex-start
+            .owl-nav
+                line-height: 0px
+                font-size: 0px
+                padding: 0 100px
+                width: 100%
+                color: $accent
+                margin-top: 10px !important
+                position: absolute
+                margin: 0 auto
+                display: flex
+                flex-direction: row
+                flex-wrap: nowrap
+                justify-content: space-between
+                align-content: stretch
+                align-items: flex-start
+                .owl-prev,.owl-next
+                    content: ''
+                    position: absolute
+                    top: 50px
+                    left: 10%
+                    transform: translate(-50%,-50%)
+                    width: 56px
+                    height: 30px
+                    background: url('../../website/assets/images/arrow.svg')
+                    background-repeat: no-repeat
+                .owl-next
+                    left: auto
+                    right: 10%
+                    transform: translate(-50%,-50%) rotateZ(180deg) 
+            .owl-dot
+                color: $secondary
+                &.active
+                    color: $accent
+                &:nth-child(1)   
+                    span::after
+                        content: '1'     
+                &:nth-child(2)   
+                    span::after
+                        content: '2'  
+                &:nth-child(3)   
+                    span::after
+                        content: '3'              
