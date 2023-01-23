@@ -21,7 +21,7 @@ const browsersync = require("browser-sync");
 
 // Destination folder
 
-const dist = 'C:/ospanel/domains/optimized.dev/website';
+const dist = './build';
 
 // Clean assets
 
@@ -113,6 +113,16 @@ function assets(){
         .pipe(browsersync.stream());
 }
 
+function frameworks(){
+    const source = 'frameworks/*';
+    const destination  = dist + '/frameworks';
+
+    return src(source)
+        .pipe(changed(source))
+        .pipe(dest(destination))
+        .pipe(browsersync.stream());
+}
+
 // Watch files
 
 function watchFiles() {
@@ -123,18 +133,20 @@ function watchFiles() {
     watch('pug/pages/*.pug', pug);
     watch('scripts/*', js);
     watch('assets/**/*', assets);
+    watch('frameworks/*', frameworks);
 }
 
 // BrowserSync
 
 function browserSync() {
     browsersync.init({
-        proxy: 'optimized.dev',
-        notify: false
+        server: {
+            baseDir: './build'
+        },
+        port: 3000
     });
-    
 }
 
 exports.watch = parallel([watchFiles, browserSync]);
-exports.default = series(clear, parallel(indexpug, pug, css, js, assets));
+exports.default = series(clear, parallel(indexpug, pug, frameworks, css, js, assets));
     
