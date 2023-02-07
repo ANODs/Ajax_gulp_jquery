@@ -1,5 +1,60 @@
 @import 'setup'
+@import 'fonts'
 
 @media screen and (min-width: 1200px)
     body
+        overflow: hidden
         margin: 0
+    .content
+        padding: 0
+        margin: 0
+        height: 100vh
+        width: 100vw
+        overflow: hidden
+        .contentbackground
+            position: absolute
+            padding: 0
+            margin: 0
+            top: 0
+            left: 0
+            background: url('/assets/images/background.png') center center/cover no-repeat 
+            height: 100vh
+            width: 100vw
+            filter: blur(5px)
+        .wrapper
+            background: #000
+            position: relative
+            margin: 0 auto
+            height: 100vh
+            max-width: 1440px
+            width: 100%
+            box-shadow: 0px 0px 200px 250px #000000
+        header
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            align-items: center
+            height: 110px
+            background: #000
+            border-bottom: 1px solid #fff
+        .logo
+            display: inline-block
+            position: relative
+            img
+                height: 80px
+        .title
+            display: inline-block
+            position: relative
+            font-family: Inter
+            color: #fff
+            vertical-align: middle
+            font-size: 50px
+            img
+                vertical-align: middle
+                height: 80px
+        .shoppingbag
+            display: inline-block
+            position: relative
+            img
+                margin-right: 13px
+                height: 80px
