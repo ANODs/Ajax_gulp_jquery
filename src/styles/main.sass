@@ -58,3 +58,114 @@
             img
                 margin-right: 13px
                 height: 80px
+        .sliderHeader
+            width: 100%
+            display: flex
+            flex-direction: row
+            position: relative
+        .query
+            display: inline
+            position: relative
+            margin: 12px 20px 12px auto
+        .maginifyingGlass
+            width: 44px
+            height: 44px
+        .elementsWrapper
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+        .elementWrapper
+            width: 260px
+            height: 500px
+            .top
+                overflow: hidden
+                cursor: pointer
+                position: relative
+                width: 100%
+                height: 390px
+                background: #000
+                border: 3px solid #fff
+                img
+                    position: absolute
+                    width: 101%
+                    height: 100%
+                .name
+                    text-align: center
+                    letter-spacing: 0.135em
+                    position: absolute
+                    bottom: 0
+                    color: #000
+                    background: #fffa
+                    opacity: 1
+                    backdrop-filter: blur(5px)
+                    width: 100%
+                    height: 130px
+                    font-size: 60px
+                    line-height: 86px
+                    font-family: Inter
+                    font-weight: bolder
+                    text-transform: uppercase
+
+                .japanese 
+                    width: 96px
+                    height: 48px
+                    background: #000
+                    position: absolute
+                    bottom: 0
+                    color: #fff 
+                    font-size: 24px
+                    text-align: center
+                    line-height: 48px
+                    letter-spacing: 0.135em
+                .tags
+                    height: 48px
+                    position: absolute
+                    bottom: 0
+                    left: 96px
+                    padding-top: 3px 
+                    padding-left: 3px 
+                    color: #000
+                    background: transparent
+                    font-weight: bolder
+                    font-family: Uni
+                    font-weight: 900
+                    line-height: 92%
+                    font-size: 16px
+                    letter-spacing: 0.15em
+                    text-transform: uppercase
+                br::last-child
+                    display: none
+                
+            .bottom
+                cursor: pointer
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                align-items: center
+                margin-top: 20px
+                width: 100%
+                height: 90px
+                background: #000
+                border: 3px solid #fff
+                *
+                    display: inline
+                    color: #fff
+                    font-size: 40px
+                    font-family: arial
+                    padding: 16px
+                    padding-right: 0
+                .price
+                    font-family: Uni
+                    &::after
+                        font-family: Uni
+                        content: '$'
+                .barcode
+                    padding: 10px 8px 0 0
+                    &::after
+                        font-family: 'barcode font'
+                        font-style: normal
+                        font-weight: 400
+                        font-size: 64px
+                        line-height: 66px
+                        content:'add to cart'
+                        display: inline
