@@ -102,6 +102,17 @@ let elements = [
   }
 ]
 
+let infoElements = [
+  {
+    'name':'FAQ',
+    'items': ['all faq', 'mastering', 'mixing', 'payment', 'voice tags', 'terms of services', 'beats']
+  },
+  {
+    'name':'ABOUT',
+    'items': ['socials', 'actors', 'creators', 'partners', 'terms of services', 'about KANKI', 'become a part of team']
+  }
+]
+
 function createElementType(type, name){
   let element = document.createElement(type.toUpperCase());
   element.className = name;
@@ -134,6 +145,7 @@ function test(item,...other) {if(item!='undefined')console.log(item);else consol
 
 class Slider {
   constructor(parentSelector,elements){
+    this.defaultFilter = 'VOICETAGGING'
     this.elementsRaw = elements
     this.createSlider()
     this.renderSliderElement(parentSelector)
@@ -157,10 +169,49 @@ class Slider {
     
     this.filterElement = new Filter('VOICETAGGING', this.elementsWrapper);
     this.sliderHeader = this.filterElement.init()
-
+    
     this.slider.appendChild(this.sliderHeader)
-    this.slider.appendChild(this.sliderBody)
     this.slider.appendChild(this.arrows)
+    this.slider.appendChild(this.sliderBody)
+
+  }
+
+  getTranslateX() {
+    let style = window.getComputedStyle(this.elementsWrapper);
+    let matrix = new WebKitCSSMatrix(style.transform);
+    return matrix.m41
+  }
+
+  isStatic(){
+    return (window.getComputedStyle(this.elementsWrapper).transition == 'all 0s ease 0s' || window.getComputedStyle(this.elementsWrapper).transition == '');
+  }
+
+  arrowTriggerRight(){
+    this.arrowRight.addEventListener('click',()=>{
+      if(this.isStatic()){
+        test(this.getTranslateX())
+        if(this.getTranslateX()>-1440){
+          let offset = ((this.getTranslateX()) - 1440)
+          this.elementsWrapper.style.transform = 'translate('+ offset +'px)'
+          this.elementsWrapper.style.transition = '.6s'
+          setTimeout(()=>{this.elementsWrapper.style.transition = '0s'}, 600)
+        }
+      }
+    })
+  }
+
+  arrowTriggerLeft(){
+    this.arrowLeft.addEventListener('click',()=>{
+      if(this.isStatic()){
+        test(this.getTranslateX())
+        if(this.getTranslateX() < 0){
+          let offset = ((this.getTranslateX()) + 1440)
+          this.elementsWrapper.style.transform = 'translate('+ offset +'px)'
+          this.elementsWrapper.style.transition = '.6s'
+          setTimeout(()=>{this.elementsWrapper.style.transition = '0s'}, 600)
+        }
+      }
+    })
   }
 
   filter(filter){
@@ -173,7 +224,6 @@ class Slider {
 
   renderSliderElement(parentSelector){
     this.parent = document.body.querySelector(parentSelector)
-    console.log(this.slider)
     this.parent.appendChild(this.slider);
   }
 
@@ -181,6 +231,11 @@ class Slider {
     this.elementsRaw.forEach(element => {
       this.renderElement(element)
     });
+
+    this.filterElement.switchFilter(this.defaultFilter)
+    this.filterElement.calcWidth()
+    this.arrowTriggerRight()
+    this.arrowTriggerLeft()
   }
 }
 
@@ -282,7 +337,6 @@ class Filter {
     let all = this.list.childNodes.length
     let hidden = 0
     this.list.childNodes.forEach(element => {if(element.getAttribute('style') == 'display: none;') hidden++})
-    console.log(all - hidden)
     this.list.style = 'width: '+ (all - hidden)*288 +"px;"
   }
 
@@ -316,7 +370,6 @@ class Filter {
         }
         else
         {
-          console.log(this.filter)
           this.switchFilter(this.filter)
           this.calcWidth()
         }
@@ -328,8 +381,16 @@ class Filter {
   }
 }
 
+class additionalSlider extends Slider{
+  super(){
+    
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
   let mainSlider = new Slider('.sliderWrapper',elements);
   mainSlider.filter('VOICETAGGING')
+  let secondSlider = new additionalSlider('.slider2',infoElements);
+
 });
