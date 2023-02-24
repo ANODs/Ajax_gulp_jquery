@@ -1,3 +1,5 @@
+'use strict';
+
 //title animation waveform ıllılı.ı
 function animateTitle() {
     let vaweform = ['ıllılı.ı','llıll.ıl','...lılı.','...ılı..','..ıllı..'];
@@ -9,8 +11,17 @@ function animateTitle() {
   }
   animateTitle();
 
-let elements = [{
-    'type':'voicetag',
+let elements = [
+  {
+    'type':'MIXING',
+    'name':'mixing',
+    'japanese':'タチ',
+    'tags':['fast','rich','quality'],
+    'img':'assets/images/tati.png',
+    'price':'9.99'
+  },
+  {
+    'type':'VOICETAGGING',
     'name':'tati',
     'japanese':'タチ',
     'tags':['juicy','penetrating','rough'],
@@ -18,7 +29,7 @@ let elements = [{
     'price':'9.99'
   },
   {
-    'type':'voicetag',
+    'type':'VOICETAGGING',
     'name':'kate',
     'japanese':'ケイト',
     'tags':['Brittle', 'thin' , 'breathy'],
@@ -26,7 +37,7 @@ let elements = [{
     'price':'9.99'
   },
   {
-    'type':'voicetag',
+    'type':'VOICETAGGING',
     'name':'why',
     'japanese':'ワイ',
     'tags':['Wobbly', 'strident' , 'ringing'],
@@ -34,7 +45,7 @@ let elements = [{
     'price':'9.99'
   },
   {
-    'type':'voicetag',
+    'type':'VOICETAGGING',
     'name':'honey',
     'japanese':'ハニー',
     'tags':['Smoky' , 'flat' , 'husky'],
@@ -42,8 +53,48 @@ let elements = [{
     'price':'9.99'
   },
   {
-    'type':'voicetag',
+    'type':'VOICETAGGING',
     'name':'zouxa',
+    'japanese':'ズーサ',
+    'tags':['Singsong', 'straight', 'tight'],
+    'img':'assets/images/zouxa.png',
+    'price':'9.99'
+  },
+  {
+    'type':'VOICETAGGING',
+    'name':'tati2',
+    'japanese':'タチ',
+    'tags':['juicy','penetrating','rough'],
+    'img':'assets/images/tati.png',
+    'price':'9.99'
+  },
+  {
+    'type':'VOICETAGGING',
+    'name':'kate2',
+    'japanese':'ケイト',
+    'tags':['Brittle', 'thin' , 'breathy'],
+    'img':'assets/images/kate.png',
+    'price':'9.99'
+  },
+  {
+    'type':'VOICETAGGING',
+    'name':'why2',
+    'japanese':'ワイ',
+    'tags':['Wobbly', 'strident' , 'ringing'],
+    'img':'assets/images/why.png',
+    'price':'9.99'
+  },
+  {
+    'type':'VOICETAGGING',
+    'name':'honey2',
+    'japanese':'ハニー',
+    'tags':['Smoky' , 'flat' , 'husky'],
+    'img':'assets/images/honey.png',
+    'price':'9.99'
+  },
+  {
+    'type':'VOICETAGGING',
+    'name':'zouxa2',
     'japanese':'ズーサ',
     'tags':['Singsong', 'straight', 'tight'],
     'img':'assets/images/zouxa.png',
@@ -64,38 +115,56 @@ function appendChilds(parent, ...nodes){
     })
 }
 
+function isDescendant(parent, child) {
+  let node = child.parentNode;
+  while (node != null) {
+      if (node == parent) {
+          return true;
+      }
+      node = node.parentNode;
+  }
+  return false;
+}
+
+function abs(x) {
+  return x < 0 ? -x : x;
+}
+
+function test(item,...other) {if(item!='undefined')console.log(item);else console.log('undefined'," "); other.forEach((elem)=>{if(elem!='undefined')console.log(elem);else console.log('undefined')})};
+
 class Slider {
   constructor(parentSelector,elements){
     this.elementsRaw = elements
-    // this.filter = createElementType('div','filter')
-    // this.query = createElementType('div','query')
-
     this.createSlider()
     this.renderSliderElement(parentSelector)
-    this.elementsRaw.forEach(element => {
-      this.renderElement(element)
-    });
+    this.init()
   }
 
   createSlider(){
     this.slider = createElementType('div','slider');
 
-    this.sliderHeader = createElementType('div','sliderHeader');
-
-    // this.queryImage = createElementType('img','maginifyingGlass')
-    // this.queryImage.src = 'assets/images/SVG/maginifyingGlass.svg';
-    // this.query.appendChild(this.queryImage)
-    // this.sliderHeader.appendChild(this.filter)
-    // this.sliderHeader.appendChild(this.query)
-
     this.sliderBody = createElementType('div','sliderBody');
-    this.sliderBody.appendChild(createElementType('div','arrows'))
+
+    this.arrows = createElementType('div','arrows')
+    this.arrowLeft = createElementType('div','left')
+    this.arrowRight = createElementType('div','right')
+
+    appendChilds(this.arrows, this.arrowLeft, this.arrowRight)
+
     this.elementsWrapper = createElementType('div','elementsWrapper')
     this.sliderBody.appendChild(this.elementsWrapper)
     this.sliderBody.appendChild(createElementType('div','scrollbar'))
+    
+    this.filterElement = new Filter('VOICETAGGING', this.elementsWrapper);
+    this.sliderHeader = this.filterElement.init()
 
     this.slider.appendChild(this.sliderHeader)
     this.slider.appendChild(this.sliderBody)
+    this.slider.appendChild(this.arrows)
+  }
+
+  filter(filter){
+    this.filterElement.switchFilter(filter)
   }
 
   renderElement(element){
@@ -109,7 +178,9 @@ class Slider {
   }
 
   init(){
-    
+    this.elementsRaw.forEach(element => {
+      this.renderElement(element)
+    });
   }
 }
 
@@ -125,7 +196,7 @@ class Element {
     this.createElement()
   }
   createElement(){
-    if(this.type === 'voicetag') {
+    if(this.type === 'VOICETAGGING') {
       this.topCard = createElementType('div','top')
       this.bottomPrice = createElementType('div','bottom')
 
@@ -141,8 +212,29 @@ class Element {
       appendChilds(this.bottomPrice,this.price,this.barcode)
 
     }
-    else if (this.type === 'mixing'){
+    else if (this.type === 'MIXING'){
+      this.topCard = createElementType('div','top')
+      this.bottomPrice = createElementType('div','bottom')
+
+      this.japanese = createElementType('div','japanese')
+      this.japanese.innerHTML = this.element.japanese
+
+      this.tags = createElementType('div','tags')
+      this.element.tags.forEach(tag => {this.tags.innerHTML += tag + '<br>'})
+
+      this.barcode = createElementType('div','barcode')
+
+      appendChilds(this.topCard,this.image,this.name,this.japanese,this.tags)
+      appendChilds(this.bottomPrice,this.price,this.barcode)
+    }
+    else if (this.type === 'MASTERING'){
       
+    }
+    else if (this.type === 'BEAT'){
+      
+    }
+    else {
+      //TODO undefiend type
     }
 
     appendChilds(this.wrapper,this.topCard,this.bottomPrice)
@@ -154,34 +246,90 @@ class Element {
 }
 
 class Filter {
-  constructor(query = ''){
+  constructor(query = '', list){
     (query && query != undefined) ? this.query = query : this.query = ''
+
+    this.list = list
 
     this.filterList = [
       'VOICETAGGING',
       'MIXING',
       'MASTERING',
       'BEATS',
-      'CONSULTATION'
+      'CONSULTATION',
+      'ALL'
     ]
+    
+    this.element = createElementType('div','sliderHeader')
 
-    this.filter = this.filterList[0]
+    this.filter = this.query == '' ? this.query : this.filterList[0]
+
     this.filterElement = createElementType('div','filter')
     this.filterElement.innerHTML = this.filter
 
     this.queryElement = createElementType('div','query')
     this.queryInput = createElementType('input','queryInput')
+    this.queryInput.setAttribute('placeholder','any keywords')
     this.queryImage = createElementType('img','maginifyingGlass')
     this.queryImage.src = 'assets/images/SVG/maginifyingGlass.svg';
-    appendChilds(this.queryElement,this.queryImage,queryInput)
+    appendChilds(this.queryElement,this.queryInput,this.queryImage)
+    appendChilds(this.element, this.filterElement,this.queryElement)
+    this.magnifyingGlass()
+    this.triggerInputByKeyboard()
   }
 
+  calcWidth(){
+    let all = this.list.childNodes.length
+    let hidden = 0
+    this.list.childNodes.forEach(element => {if(element.getAttribute('style') == 'display: none;') hidden++})
+    console.log(all - hidden)
+    this.list.style = 'width: '+ (all - hidden)*288 +"px;"
+  }
 
+  switchFilter(filter = 'VOICETAGGING') {
+    this.list.querySelectorAll('.elementWrapper').forEach(element => {element.getAttribute('data-type') == filter ? element.style = 'display: auto' : element.style = 'display: none'})
+  }
 
+  filtertags(filter = ''){
+    this.list.querySelectorAll('.elementWrapper').forEach(element => {
+      if (element.innerHTML.toLowerCase().includes(filter.toLowerCase()))
+        element.style = 'display: auto';
+      else
+        element.style = 'display: none';
+    })
+  }
+
+  magnifyingGlass(){
+    this.queryImage.addEventListener('click',()=>{
+      if(this.queryInput.value == '' || this.queryInput.value === undefined)
+        this.queryInput.focus()
+      else 
+        this.filtertags(this.queryInput.value)
+    })
+  }
+
+  triggerInputByKeyboard(){
+      this.queryInput.addEventListener('input',()=>{
+        if(this.queryInput.value != ''){
+          this.filtertags(this.queryInput.value)
+          this.calcWidth()
+        }
+        else
+        {
+          console.log(this.filter)
+          this.switchFilter(this.filter)
+          this.calcWidth()
+        }
+      })
+  }
+
+  init(){
+    return this.element
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
 
   let mainSlider = new Slider('.sliderWrapper',elements);
-
+  mainSlider.filter('VOICETAGGING')
 });
