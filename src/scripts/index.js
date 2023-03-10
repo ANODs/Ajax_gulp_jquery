@@ -102,17 +102,6 @@ let elements = [
   }
 ]
 
-let infoElements = [
-  {
-    'name':'FAQ',
-    'items': ['all faq', 'mastering', 'mixing', 'payment', 'voice tags', 'terms of services', 'beats']
-  },
-  {
-    'name':'ABOUT',
-    'items': ['socials', 'actors', 'creators', 'partners', 'terms of services', 'about KANKI', 'become a part of team']
-  }
-]
-
 function createElementType(type, name){
   let element = document.createElement(type.toUpperCase());
   element.className = name;
@@ -381,16 +370,9 @@ class Filter {
   }
 }
 
-class additionalSlider extends Slider{
-  super(){
-    
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
 
   let mainSlider = new Slider('.sliderWrapper',elements);
   mainSlider.filter('VOICETAGGING')
-  let secondSlider = new additionalSlider('.slider2',infoElements);
 
 });
