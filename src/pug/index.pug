@@ -3,4 +3,66 @@ html
     include includes/head.pug
     body
         .content
-            
+            header 
+                .hero 
+                    img(src="/assets/svg/ararate.svg", alt="")
+                    h1 ресторан армянской кухни в Лиссабоне
+            .cardsSection 
+                .cardsWrapper 
+                    .card
+                        h3 Ресторан
+                        hr
+                        img(src="/assets/png/Ararate_logo.png", alt="")
+                        p Ресторан «Арарат» предлагает познакомиться с традиционными армянскими блюдами и блюдами кавказских государств, куда мы привнесли новый португальский характер.
+                    .card
+                        h3 Армения
+                        hr
+                        img(src="/assets/png/Rectangle 10.png", alt="")
+                        p Армения – древняя страна, расположенная в кавказских горах.
+                    .card
+                        h3 Кухня
+                        hr
+                        img(src="/assets/png/wheel.png", alt="")
+                        p Кухня свято хранит традиционные рецепты уже больше 2500 лет. Многие армянские блюда имееют свою историю и легенду, бережно передающуюся из поколения в поколение.
+            .sliderSection 
+                .sliderWrapper 
+                    .slider 
+                        .elements 
+                                img.element(src="/assets/menuSlides/slide1.png", alt="")
+                                img.element(src="/assets/menuSlides/slide1.png", alt="")
+                                img.element(src="/assets/menuSlides/slide1.png", alt="")
+                                img.element(src="/assets/menuSlides/slide1.png", alt="")
+                                img.element(src="/assets/menuSlides/slide1.png", alt="")
+                                img.element(src="/assets/menuSlides/slide1.png", alt="")
+                        ul.sliderNav
+                            li.active
+                            li 
+                            li 
+                            li 
+                            li 
+                            li
+                        .sliderDescription
+                            p Кухня одного из древнейших государств свято хранит традиционные рецепты уже больше 2500 лет. Почти каждое армянское блюдо имеет свою историю и легенду, бережно передающуюся из поколения в поколение.
+                            a(href="") Открыть меню
+            .eventsSection
+                .eventsWrapper 
+                    .events 
+                        .slider
+                            .elements 
+                                img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                                img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                                img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                                img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                                img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                                img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                            ul.sliderNav
+                                li.active
+                                li 
+                                li 
+                                li 
+                                li 
+                                li
+                            .sliderDescription
+                                h3 в данный момент никаких ивентов нет
+                                p тут будет информация обо всех проводимых мероприятиях
+                                a(href="#") подробнее...
