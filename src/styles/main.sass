@@ -89,6 +89,19 @@
             width: 100%
             display: flex
             justify-content: center
+            &::before
+                position: absolute
+                content: 'КУХНЯ'
+                font-family: Messiri
+                font-style: normal
+                font-weight: 700
+                font-size: 250px
+                line-height: 250px
+                text-align: center
+                letter-spacing: 0.1em
+                color: rgba(0, 0, 0, 0.1)
+                left: 0
+                transform: translate(20px, -160px)
             .sliderWrapper
                 margin: 90px 0
                 display: flex
@@ -167,82 +180,176 @@
             width: 100%
             display: flex
             justify-content: center
+            margin: 210px 0 130px 0
+            &::before
+                position: absolute
+                content: 'СОБЫТИЯ'
+                font-family: Messiri
+                font-style: normal
+                font-weight: 700
+                font-size: 200px
+                line-height: 200px
+                text-align: center
+                letter-spacing: 0.1em
+                color: rgba(0, 0, 0, 0.1)
+                right: 0
+                transform: translate(0, -100%)
             .eventsWrapper 
-                margin: 90px 0
                 display: flex
                 width: 100%
                 justify-content: center
                 max-width: 1200px
                 height: 720px
-                .events
-                    .slider
-                        width: 100%
-                        position: relative
-                        top: 50%
-                        left: 50%
-                        transform: translate(-50%,-50%)
-                        .elements
-                            display: inline-block
-                            position: absolute
-                            overflow: hidden
-                            border-radius: 10px
-                            width: 1200px
-                            height: 720px
-                            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
-                            img
-                                left: -2.5%
-                                position: relative
-                                width: 105%
-                                position: relative
-                        .sliderNav
-                            left: 50%
-                            bottom: -440px
-                            position: relative
-                            width: 250px
-                            display: flex
-                            justify-content: space-between
-                            transform: translate(-50%, 0)
-                            li
-                                cursor: pointer
-                                display: flex
-                                background: #fff8
-                                border-radius: 100%
-                                width: 22px
-                                height: 22px
-                                &.active
-                                    cursor: auto
-                                    background: #fff
-                    h3
-                        font-family: 'El Messiri'
-                        font-style: normal
-                        font-weight: 400
-                        font-size: 24px
-                        line-height: 38px
-                        text-align: center
-                    .sliderDescription
-                        padding: 35px 55px
-                        font-family: Mulish
-                        font-style: normal
-                        font-weight: 400
-                        font-size: 16px
-                        line-height: 22px
-                        text-align: center
-                        letter-spacing: 0.1em
-                        text-align: center
-                        background: #fff
-                        border-radius: 5px
-                        left: 50%
+                
+                .slider
+                    width: 100%
+                    position: relative
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%,-50%)
+                    .elements
+                        display: inline-block
                         position: absolute
-                        width: 50%
-                        height: 100%
-                        transform: translate(0,0)
-                    a
-                        bottom: -10px
-                        position: relative
+                        overflow: hidden
+                        border-radius: 10px
+                        width: 1200px
+                        height: 720px
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+                        img
+                            top: 0
+                            position: relative
+                            width: 100%
+                            height: 100%
+                            position: relative
+                    .sliderNav
+                        left: 27%
+                        bottom: 32px
+                        position: absolute
+                        width: 250px
+                        display: flex
+                        justify-content: space-between
+                        transform: translate(-50%, 0)
+                        li
+                            cursor: pointer
+                            display: flex
+                            background: #fff8
+                            border-radius: 100%
+                            width: 22px
+                            height: 22px
+                            &.active
+                                cursor: auto
+                                background: #fff
+                h3
+                    font-family: Messiri
+                    font-style: normal
+                    font-weight: 400
+                    font-size: 40px
+                    line-height: 40px
+                    text-align: center
+                .sliderDescription
+                    padding: 35px 100px
+                    font-family: Mulish
+                    font-style: normal
+                    font-weight: 400
+                    font-size: 16px
+                    line-height: 22px
+                    text-align: center
+                    letter-spacing: 0.1em
+                    text-align: center
+                    background: #fffc
+                    border-top-right-radius: 10px
+                    border-bottom-right-radius: 10px
+                    left: 54%
+                    position: absolute
+                    width: 46%
+                    height: 100%
+                    transform: translate(0,0)
+                p
+                    padding: 40px 40px 0 40px
+                    font-family: Mulish
+                    font-style: normal
+                    font-weight: 400
+                    font-size: 22px
+                    line-height: 22px
+                    text-align: center
+                    letter-spacing: 0.1em
+                a
+                    bottom: 32px
+                    position: absolute
+                    font-family: Messiri
+                    font-style: normal
+                    font-weight: 400
+                    font-size: 22px
+                    line-height: 22px
+                    left: 50%
+                    transform: translateX(-50%)
+                    text-decoration-line: underline
+        footer
+            background: #1E1E1E
+            position: relative
+            height: 680px
+            width: 100%
+            .footerWrapper
+                position: absolute
+                top: 125px
+                left: 50%
+                transform: translate(-50%, 0)
+                max-width: 1200px
+                width: 100%
+                .map
+                    border-top-left-radius: 10px
+                    border-bottom-left-radius: 10px
+                    display: inline-block
+                    
+                    background: #fff
+                    height: 350px
+                    width: 56%
+                .info
+                    border-top-right-radius: 10px
+                    border-bottom-right-radius: 10px
+                    position: absolute
+                    top: 0
+                    height: 350px
+                    background: #363636
+                    display: inline-block
+                    width: 44%
+                    font-family: Mulish
+                    font-style: normal
+                    font-weight: 400
+                    font-size: 16px
+                    line-height: 22px
+                    text-align: center
+                    letter-spacing: 0.1em
+                    color: #FFFFFF
+                    ul
+                        text-align: left
+                        padding: 65px 96px
+                        li
+                            margin: 10px 0
+                    &::before
+                        content: 'Welcome'
+                        top: 0
+                        position: absolute
+                        transform: translate(-50%, -100%)
                         font-family: Messiri
                         font-style: normal
-                        font-weight: 400
-                        font-size: 34px
-                        line-height: 53px
-                        text-align: center
-                        text-decoration-line: underline
+                        font-weight: 700
+                        font-size: 100px
+                        line-height: 45px
+                        letter-spacing: 3px
+                        color: #363636
+            .copyright
+                background: #181818
+                height: 80px
+                position: absolute
+                bottom: 0
+                width: 100%
+                text-align: center
+                color: #fff
+                font-family: Messiri
+                font-style: normal
+                font-weight: 400
+                font-size: 16px
+                line-height: 88px
+                text-align: center
+                letter-spacing: 0.1em     
