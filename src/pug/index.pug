@@ -3,77 +3,94 @@ html
     include includes/head.pug
     body
         .content
-            header 
-                .hero 
-                    img(src="/assets/svg/ararate.svg", alt="")
-                    h1 ресторан армянской кухни в Лиссабоне
-            .cardsSection 
-                .cardsWrapper 
-                    .card
-                        h3 Ресторан
-                        hr
-                        img(src="/assets/png/Ararate_logo.png", alt="")
-                        p Ресторан «Арарат» предлагает познакомиться с традиционными армянскими блюдами и блюдами кавказских государств, куда мы привнесли новый португальский характер.
-                    .card
-                        h3 Армения
-                        hr
-                        img(src="/assets/png/Rectangle 10.png", alt="")
-                        p Армения – древняя страна, расположенная в кавказских горах.
-                    .card
-                        h3 Кухня
-                        hr
-                        img(src="/assets/png/wheel.png", alt="")
-                        p Кухня свято хранит традиционные рецепты уже больше 2500 лет. Многие армянские блюда имееют свою историю и легенду, бережно передающуюся из поколения в поколение.
-            .sliderSection 
-                .sliderWrapper 
-                    .slider 
-                        .elements 
-                                img.element(src="/assets/menuSlides/slide1.png", alt="")
-                                img.element(src="/assets/menuSlides/slide1.png", alt="")
-                                img.element(src="/assets/menuSlides/slide1.png", alt="")
-                                img.element(src="/assets/menuSlides/slide1.png", alt="")
-                                img.element(src="/assets/menuSlides/slide1.png", alt="")
-                                img.element(src="/assets/menuSlides/slide1.png", alt="")
-                        ul.sliderNav
-                            li.active
-                            li 
-                            li 
-                            li 
-                            li 
-                            li
-                        .sliderDescription
-                            p Кухня одного из древнейших государств свято хранит традиционные рецепты уже больше 2500 лет. Почти каждое армянское блюдо имеет свою историю и легенду, бережно передающуюся из поколения в поколение.
-                            a(href="") Открыть меню
-            .eventsSection
-                .eventsWrapper 
-                    .slider
-                        .elements 
-                            img.element(src="/assets/eventsSlides/slide1.png", alt="")
-                            img.element(src="/assets/eventsSlides/slide1.png", alt="")
-                            img.element(src="/assets/eventsSlides/slide1.png", alt="")
-                            img.element(src="/assets/eventsSlides/slide1.png", alt="")
-                            img.element(src="/assets/eventsSlides/slide1.png", alt="")
-                            img.element(src="/assets/eventsSlides/slide1.png", alt="")
-                        ul.sliderNav
-                            li.active
-                            li 
-                            li 
-                            li 
-                            li 
-                            li
-                        .sliderDescription
-                            h3 в данный момент никаких ивентов нет
-                            p тут будет информация обо всех проводимых мероприятиях
-                            a(href="#") подробнее...
-            footer
-                .footerWrapper
-                    .map 
-                    .info
-                        ul 
-                            li  reservasararate@gmail.com
-                            li  925 451 509
-                            li  Av. Conde Valbom 70, 1050-099 Lisboa
-                            li  Открыты каждый день <br>
-                                |12:30 — 23:00
-                            li Доставка по Лиссабону.
-                .copyright © 2022 Convites da Vila
+            swiper-container(class="mySwiper" pagination="true" pagination-clickable="true" direction="vertical" mousewheel="true" parallax="true" speed="400")
+                swiper-slide
+                    header(data-swiper-parallax="600")
+                        video(style="position: absolute; width: 110vw; left:0; top: -10vw; filter: blur(20px)" autoplay muted loop src="/assets/mp4/Header-background.mp4")  
+                        .hero
+                            img(data-swiper-parallax="-200" src="/assets/svg/ararate.svg", alt="")
+                            h1(data-swiper-parallax="-180") ресторан армянской кухни в Лиссабоне
+                swiper-slide
+                    .cardsSection 
+                        .watermark(data-swiper-parallax="600")
+                            img(src="/assets/svg/ararate.svg", alt="")
+                        .cardsWrapper(data-swiper-parallax="-200") 
+                            .card(data-tilt data-tilt-glare data-tilt-max-glare="1" data-tilt-reverse="true" data-tilt-full-page-listening style="transform-style: preserve-3d; ransform: perspective(1000px)" data-swiper-parallax="-100")
+                                h3(style="transform: translateZ(20px)") Ресторан
+                                hr(style="transform: translateZ(20px)")
+                                img(src="/assets/png/Ararate_logo.png" style="position: absolute; filter: blur(2px)", alt="")
+                                img(src="/assets/png/Ararate_logo.png" style="transform: translateZ(20px)", alt="")
+                                p(style="transform: translateZ(20px)") Ресторан «Арарат» предлагает познакомиться с традиционными армянскими блюдами и блюдами кавказских государств, куда мы привнесли новый португальский характер.
+                            .card(data-tilt data-tilt-glare data-tilt-max-glare="1" data-tilt-reverse="true" data-tilt-full-page-listening style="transform-style: preserve-3d; ransform: perspective(1000px)" data-swiper-parallax="-100")
+                                h3(style="transform: translateZ(20px)") Кухня
+                                hr(style="transform: translateZ(20px)")
+                                img(src="/assets/png/wheel.png" style="position: absolute; filter: blur(2px)", alt="")
+                                img(src="/assets/png/wheel.png" style="transform: translateZ(20px)", alt="")
+                                p(style="transform: translateZ(20px)") Кухня свято хранит традиционные рецепты уже больше 2500 лет. Многие армянские блюда имееют свою историю и легенду, бережно передающуюся из поколения в поколение.
+                            .card(data-tilt data-tilt-glare data-tilt-max-glare="1" data-tilt-reverse="true" data-tilt-full-page-listening style="transform-style: preserve-3d; ransform: perspective(1000px)" data-swiper-parallax="-100")
+                                h3(style="transform: translateZ(20px)") Армения
+                                hr(style="transform: translateZ(20px)")
+                                img(src="/assets/png/Rectangle 10.png" style="position: absolute; filter: blur(2px); opacity: .6", alt="")
+                                img(src="/assets/png/Rectangle 10.png" style="transform: translateZ(20px)", alt="")
+                                p(style="transform: translateZ(20px)") Армения – древняя страна, расположенная в кавказских горах.
+                        
+                swiper-slide
+                    .sliderSection 
+                        .watermark(data-swiper-parallax="600")
+                            img(src="/assets/svg/Rectangle-10.svg", alt="")
+                        .sliderWrapper(data-swiper-parallax="-200") 
+                            .slider(data-swiper-parallax="-100")
+                                swiper-container.elements(pagination="true" pagination-dynamic-bullets="true" space-between="0" pagination-type="progressbar" effect="fade" grab-cursor="true" loop='true' autoplay-delay="4000" autoplay-disable-on-interaction="false") 
+                                    swiper-slide
+                                        img.element(src="/assets/menuSlides/slide1.png", alt="")
+                                    swiper-slide
+                                        img.element(src="/assets/menuSlides/menuSlide2.jpg", alt="")
+                                    swiper-slide
+                                        img.element(src="/assets/menuSlides/menuSlide3.jpg", alt="")
+                                    swiper-slide
+                                        img.element(src="/assets/menuSlides/menuSlide4.jpg", alt="")
+                                    swiper-slide
+                                        img.element(src="/assets/menuSlides/menuSlide5.jpg", alt="")
+                                    swiper-slide
+                                        img.element(src="/assets/menuSlides/menuSlide6.jpg", alt="")
+                                .sliderDescription(data-swiper-parallax="-200")
+                                    p Кухня одного из древнейших государств свято хранит традиционные рецепты уже больше 2500 лет. Почти каждое армянское блюдо имеет свою историю и легенду, бережно передающуюся из поколения в поколение.
+                                    a(href="") Открыть меню
+                //- swiper-slide
+                //-     .eventsSection
+                //-         .eventsWrapper 
+                //-             .slider
+                //-                 .elements 
+                //-                     img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                //-                     img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                //-                     img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                //-                     img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                //-                     img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                //-                     img.element(src="/assets/eventsSlides/slide1.png", alt="")
+                //-                 ul.sliderNav
+                //-                     li.active
+                //-                     li 
+                //-                     li 
+                //-                     li 
+                //-                     li 
+                //-                     li
+                //-                 .sliderDescription
+                //-                     h3 в данный момент никаких ивентов нет
+                //-                     p тут будет информация обо всех проводимых мероприятиях
+                //-                     a(href="#") подробнее...
+                swiper-slide
+                    footer
+                        .footerWrapper
+                            .map 
+                                iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194.51008870342864!2d-9.150661579809586!3d38.737057905607905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd193322fa043b2b%3A0x80061db13a24f92d!2sArarate!5e0!3m2!1sru!2sit!4v1686068872760!5m2!1sru!2sit" width="675" height="700" style="border:0; border-top-left-radius: 10px; border-bottom-left-radius: 10px; filter: hue-rotate(-20deg)" allowfullscreen="false" referrerpolicy="no-referrer-when-downgrade")
+                            .info
+                                ul 
+                                    li  reservasararate@gmail.com <br> <br>
+                                    li  925 451 509 <br> <br>
+                                    li  Av. Conde Valbom 70, 1050-099 Lisboa <br> <br>
+                                    li  Открыты каждый день <br>
+                                        |12:30 — 23:00 <br> <br>
+                                    li Доставка по Лиссабону.
+                        .copyright © 2022 Convites da Vila
+        script(src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js")
