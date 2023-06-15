@@ -1,0 +1,2 @@
+
+document.body.querySelector('.info').querySelectorAll('i').forEach((item)=>{item.addEventListener('click',()=>{document.body.querySelector('#footer').classList.toggle('footerWrapper');document.body.querySelector('#footer').classList.toggle('footerWrapper-active')})})
