@@ -1,13 +1,121 @@
 |<!DOCTYPE html>
-html
+html(lang="en")
     include includes/head.pug
-    body
-        .content
-            .contentbackground
-            .wrapper
-                include includes/header.pug
-                include includes/mainSlider.pug
-                include includes/runingStroke.pug
-                include includes/secondSlider.pug
-                include includes/shoppingBag.pug
-                
+body
+    swiper-container#swiper2.mySwiper.swiper-v(space-between='0' mousewheel='true' parallax='true' speed='400')
+        swiper-slide
+            div(style='height: 100vh; width: 100vw; z-index: 100; mix-blend-mode: difference;' data-swiper-parallax='-600')
+                .logo KANKIMUSIC
+            div(style='position: absolute; height: 100vh; width: 100vw; box-shadow: inset 0px 0px 32px 5vmin rgba(0,0,0,1);' data-swiper-parallax='600')
+                video(style='position: absolute; height: 100vmax; left:50%; top: 50%; transform: translate(-50%, -50%); filter: blur(5px)' autoplay='' muted='' loop='' src='https://kankiplayer.000webhostapp.com/123.mp4')
+        swiper-slide.mainContent
+            script(type='module' src='https://unpkg.com/@splinetool/viewer/build/spline-viewer.js')
+            spline-viewer(style='filter: invert(0);' url='https://draft.spline.design/0KQh5frbKKWwrosV/scene.splinecode' events-target='global')
+            .tiktok
+                span Tik
+                span Tok
+            swiper-container#swiper1.mySwiper.swiper-h(style=' mix-blend-mode: luminosity; backdrop-filter: invert(0);' grab-cursor='true' loop='true' parallax='true' data-swiper-parallax='-600')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+                swiper-slide
+                    .elementWrapper(data-type='voicetag')
+                        .top
+                            img(src='https://i.pinimg.com/originals/13/b9/c2/13b9c2da1493e4d91cc167754a09968c.jpg' alt='')
+                            .name KATE
+                            .rating 95%
+                            .link @katana
+                        .bottom
+                            .price 9.99$
+                            .barcode(style='margin-top: 10px;')
+        script(src='https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js')
+        script
+            include includes/main.js
+        

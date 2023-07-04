@@ -5,7 +5,7 @@ function animateTitle() {
     let vaweform = ['ıllılı.ı','llıll.ıl','...lılı.','...ılı..','..ıllı..'];
     let counter = 0;
     let interval = setInterval(() => {
-      document.title = 'KANKI MUSIC ' + vaweform[counter];
+      document.title = 'KANKIMUSIC ' + vaweform[counter];
       counter = (counter + 1) % vaweform.length;
     }, 100);
   }

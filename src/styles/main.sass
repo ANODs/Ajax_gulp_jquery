@@ -1,268 +1,308 @@
 @import 'setup'
 @import 'fonts'
+*
+  box-sizing: border-box
 
-@media screen and (min-width: 1200px)
-    body
-        overflow: hidden
-        margin: 0
-    .content
+.logo
+  cursor: default
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50.5%, -50%) scale(0.97, 1)
+  z-index: 100
+  font-size: 18vw
+  letter-spacing: -.6vmin
+
+  &::after
+    position: absolute
+    font-size: 5vmin
+    letter-spacing: 0px
+    position: absolute
+    bottom: calc(-30vh + 3vw)
+    left: 50%
+    transform: translate(-50.5%, 0)
+    content: 'scroll down'
+
+@media (hover: none) and (pointer: coarse)
+  .logo::after
+    content: 'swipe left'
+
+html
+  position: relative
+  height: 100%
+
+body
+  position: relative
+  height: 100%
+  background: #eee
+  font-family: kanki
+  font-size: 14px
+  background: #000
+  margin: 0
+  padding: 0
+  overflow: hidden
+
+spline-viewer
+  position: absolute
+  width: 100vw
+  height: 100vh
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%) scale(1.2)
+  filter: saturate(1.1)
+
+swiper-container
+  width: 100%
+  height: 100%
+
+swiper-slide
+  text-align: center
+  font-size: 18px
+  display: flex
+  justify-content: center
+  align-items: center
+  overflow: hidden
+
+  img
+    display: block
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+.swiper-v
+  background: none
+  color: #fff
+  overflow: hidden
+
+.swiper-h, .mainContent
+  display: flex
+  flex-direction: column
+  flex-wrap: nowrap
+  overflow: hidden
+
+.elementWrapper
+  filter: invert(1)
+  width: 80vw
+  height: 18vh
+  display: flex
+
+  .top
+    filter: invert(1)
+    cursor: pointer
+    position: relative
+    width: 75%
+    height: 100%
+    background: #000
+    border: 3px solid #fff
+    overflow: hidden
+
+    img
+      position: absolute
+      width: 100%
+      height: initial
+      max-width: 100%
+      position: absolute
+      top: -30vmin
+      left: 0px
+
+    .name
+      display: none
+      text-align: center
+      letter-spacing: -.2vmin
+      position: absolute
+      bottom: 0
+      color: #000
+      background: #fffa
+      opacity: 1
+      backdrop-filter: blur(5px)
+      width: 100%
+      font-size: 4vmin
+      line-height: 4vmin
+      font-family: kanki
+
+    .rating
+      width: 96px
+      height: 48px
+      background: #000
+      position: absolute
+      bottom: 0
+      color: #fff
+      font-size: 24px
+      text-align: center
+      line-height: 48px
+
+    .link
+      display: table-cell
+      height: 48px
+      background: #fffa
+      opacity: 1
+      backdrop-filter: blur(5px)
+      position: relative
+      bottom: calc(-18vh + 54px)
+      z-index: 100
+      left: 96px
+      padding: 0 5px
+      color: #000
+      font-family: kanki
+      line-height: 3vmin
+      font-size: 3vmin
+      vertical-align: middle
+      letter-spacing: -.1vmin
+      text-transform: uppercase
+
+  .bottom
+    filter: invert(1)
+    cursor: pointer
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    width: 25%
+    height: 100%
+    background: #000
+    border: 3px solid #fff
+    white-space: nowrap
+
+    *
+      display: inline
+      color: #fff
+      font-size: 5vmin
+      font-family: kanki
+      padding: 0 12px 14px 12px
+      white-space: nowrap
+      margin-top: auto
+
+    .barcode
+      padding: 0px 12px 0 12px
+      margin-top: 0 !important
+      margin-bottom: 100%
+
+      &::after
+        font-family: 'barcode font'
+        content: 'add to cart'
+        font-size: 7vmin
+        display: inline
+
+@media (min-width: 1024px)
+  .swiper-h, .mainContent
+    flex-direction: column-reverse
+
+  .elementWrapper
+    filter: invert(1)
+    width: 260px !important
+    height: 500px !important
+    display: flex
+    flex-direction: column
+
+    .top
+      filter: invert(1)
+      cursor: pointer
+      position: relative
+      width: 100% !important
+      height: 390px !important
+      background: #000
+      border: 3px solid #fff
+
+      img
+        position: absolute
+        width: 100% !important
+        height: 100% !important
+        top: 0
+
+      .name
+        display: block
+        text-align: center
+        letter-spacing: -.2vmin
+        position: absolute
+        bottom: 0
+        color: #000
+        background: #fffa
+        opacity: 1
+        backdrop-filter: blur(5px)
+        width: 100%
+        height: 130px
+        font-size: 8vmin
+        line-height: 8vmin
+        font-family: kanki
+
+      .rating
+        width: 96px
+        height: 48px
+        background: #000
+        position: absolute
+        bottom: 0
+        color: #fff
+        font-size: 24px
+        text-align: center
+        line-height: 48px
+
+      .link
+        position: absolute
+        bottom: 0
+        z-index: 100
+        left: 96px
+        padding: 1vmin 3px 0 3px
+        color: #000
+        background: transparent
+        font-family: kanki
+        line-height: 100%
+        font-size: 3vmin
+        letter-spacing: -.1vmin
+        text-transform: uppercase
+
+    .bottom
+      filter: invert(1)
+      cursor: pointer
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+      margin-top: 20px
+      width: 100%
+      height: 90px
+      background: #000
+      border: 3px solid #fff
+
+      *
+        display: inline
+        color: #fff
+        font-size: 40px
+        font-family: kanki
+        padding: 16px
+
+      .barcode
         padding: 0
-        margin: 0
-        height: 100vh
-        width: 100vw
-        overflow: hidden
-        .contentbackground
-            position: absolute
-            padding: 0
-            margin: 0
-            top: 0
-            left: 0
-            background: url('/assets/images/background.png') center center/cover no-repeat 
-            height: 100vh
-            width: 100vw
-            filter: blur(5px)
-        .wrapper
-            background: #000
-            position: relative
-            margin: 0 auto
-            height: 100vh
-            max-width: 1440px
-            width: 100%
-            box-shadow: 0px 0px 80px 80px #000000
-        header
-            display: flex
-            flex-direction: row
-            justify-content: space-between
-            align-items: center
-            height: 50px
-            background: #000
-            border-bottom: 1px solid #fff
-        .logo
-            display: flex
-            position: relative
+        margin-bottom: 0
 
-            img
-                vertical-align: middle
-                height: 35px
-        .title
-            left: 50%
-            transform: translateX(-50%)
-            display: inline-block
-            position: absolute
-            font-family: Inter
-            color: #fff
-            vertical-align: middle
-            font-size: 30px
-            img
-                vertical-align: middle
-                height: 40px
-        .shoppingbag
-            display: inline-block
-            position: relative
-            img
-                margin-right: 13px
-                height: 40px
-        .sliderHeader
-            height: 50px
-            width: 100%
-            display: flex
-            flex-direction: row
-            position: relative
-        .sliderBody
-            overflow: hidden
-        .filter
-            font-size: 30px
-            line-height: 50px
-            height: 50px
-            color: #fff
-            cursor: pointer
-            &::after
-                content: '▼'
-                color: #fff
-                font-size: 16px
-                line-height: 16px
-                position: absolute
-                top: 50%
-                left: 0%
-                transform: translate(235px,-50%)
-                font-family: Inter
-                text-transform: uppercase
-                cursor: pointer
-                transition: .3s
-            &:hover::after
-                transform: translate(235px,calc(-50% + 2px))
-        .query
-            display: inline
-            margin: 12px 15px 5px auto
-            .queryInput
-                margin-top: 4px
-                margin-right: 5px
-                position: relative
-                top: 0
-                transition: .3s
-                outline: none
-                border: none
-                border-bottom: 2px solid #fff0
-                background: none
-                width: 260px
-                color: #fff
-                font-size: 30px
-                line-height: 30px
-                font-family: Inter
-                text-transform: uppercase
-                transform: translate(-10px,-10px)
-                &::placeholder
-                    transition: .3s
-                    color: #fff8
-                &:not(:focus)
-                    &::placeholder
-                        color: #fff0
-                
-        .arrows
-            position: absolute
-            width: 100%
-            height: 500px
-            transform: translate(0,0)
-            display: flex
-            justify-content: space-between
-            .left,.right
-                cursor: pointer
-                width: 34px
-                height: 100%
-                background: url('/assets/images/SVG/arrow.svg') center center/cover no-repeat 
-                transition: .3s
-            
-            .left
-                transform: translateX(-30px) rotateZ(180deg)
-                &:hover
-                    transform: translateX(-35px) rotateZ(180deg)
-            .right
-                transform: translateX(30px)
-                &:hover
-                    transform: translateX(35px)
+        &::after
+          font-family: 'barcode font'
+          content: 'add to cart'
+          font-size: 60px
+          padding: 0 12px 0 0
+          display: inline
 
+.tiktok
+  cursor: default
+  width: 100vw
+  mix-blend-mode: difference
+  font-size: 8vmin
+  z-index: 100
 
-        .maginifyingGlass
-            transform: translateY(-5px)
-            width: 30px
-            height: 30px
-            cursor: pointer
-        .elementsWrapper
-            display: flex
-            flex-direction: row
-            justify-content: space-around
-            height: 500px
-        .elementWrapper
-            width: 260px
-            height: 500px
-            .top
-                overflow: hidden
-                cursor: pointer
-                position: relative
-                width: 100%
-                height: 390px
-                background: #000
-                border: 3px solid #fff
-                img
-                    position: absolute
-                    top: -1%
-                    left: -1%
-                    width: 102%
-                    height: 102%
-                .name
-                    text-align: center
-                    letter-spacing: 0.135em
-                    position: absolute
-                    bottom: 0
-                    color: #000
-                    background: #fffa
-                    opacity: 1
-                    backdrop-filter: blur(5px)
-                    width: 100%
-                    height: 130px
-                    font-size: 60px
-                    line-height: 86px
-                    font-family: Inter
-                    font-weight: bolder
-                    text-transform: uppercase
+  span
+    &:nth-child(1)
+      padding-right: 5px
+      mix-blend-mode: difference
+      text-align: right
+      display: inline-block
+      color: #000
+      background: #fff
+      width: 50vw
 
-                .japanese 
-                    width: 96px
-                    height: 48px
-                    background: #000
-                    position: absolute
-                    bottom: 0
-                    color: #fff 
-                    font-size: 24px
-                    text-align: center
-                    line-height: 48px
-                    letter-spacing: 0.135em
-                .tags
-                    height: 48px
-                    position: absolute
-                    bottom: 0
-                    left: 96px
-                    padding-top: 3px 
-                    padding-left: 3px 
-                    color: #000
-                    background: transparent
-                    font-weight: bolder
-                    font-family: Uni
-                    font-weight: 900
-                    line-height: 92%
-                    font-size: 16px
-                    letter-spacing: 0.15em
-                    text-transform: uppercase
-                br::last-child
-                    display: none
-                
-            .bottom
-                cursor: pointer
-                display: flex
-                flex-direction: row
-                justify-content: space-between
-                align-items: center
-                margin-top: 20px
-                width: 100%
-                height: 90px
-                background: #000
-                border: 3px solid #fff
-                *
-                    display: inline
-                    color: #fff
-                    font-size: 40px
-                    font-family: arial
-                    padding: 16px
-                    padding-right: 0
-                .price
-                    font-family: Uni
-                    &::after
-                        font-family: Uni
-                        content: '$'
-                .barcode
-                    padding: 10px 8px 0 0
-                    &::after
-                        font-family: 'barcode font'
-                        font-style: normal
-                        font-weight: 400
-                        font-size: 64px
-                        line-height: 66px
-                        content:'add to cart'
-                        display: inline
-        .strokeWrapper
-            width: 100%
-            overflow: hidden
-            .stroke
-                animation: stroke 2s linear 0s infinite normal none
-                background: url('/assets/images/stroke2.png') center center/cover no-repeat 
-                width: 1740px
-                height: 50px
-                margin-top: 28px
-                position: relative
-
-            @keyframes stroke
-                0%
-                    transform: translateX(0)
-                100%
-                    transform: translateX(-200px)
-        
+    &:nth-child(2)
+      padding-left: 5px
+      mix-blend-mode: difference
+      text-align: left
+      display: inline-block
+      color: #fff
+      background: #000
+      width: 50vw
