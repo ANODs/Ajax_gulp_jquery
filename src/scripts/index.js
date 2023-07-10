@@ -132,247 +132,106 @@ function abs(x) {
 
 function test(item,...other) {if(item!='undefined')console.log(item);else console.log('undefined'," "); other.forEach((elem)=>{if(elem!='undefined')console.log(elem);else console.log('undefined')})};
 
-class Slider {
-  constructor(parentSelector,elements){
-    this.defaultFilter = 'VOICETAGGING'
-    this.elementsRaw = elements
-    this.createSlider()
-    this.renderSliderElement(parentSelector)
-    this.init()
-  }
-
-  createSlider(){
-    this.slider = createElementType('div','slider');
-
-    this.sliderBody = createElementType('div','sliderBody');
-
-    this.arrows = createElementType('div','arrows')
-    this.arrowLeft = createElementType('div','left')
-    this.arrowRight = createElementType('div','right')
-
-    appendChilds(this.arrows, this.arrowLeft, this.arrowRight)
-
-    this.elementsWrapper = createElementType('div','elementsWrapper')
-    this.sliderBody.appendChild(this.elementsWrapper)
-    this.sliderBody.appendChild(createElementType('div','scrollbar'))
-    
-    this.filterElement = new Filter('VOICETAGGING', this.elementsWrapper);
-    this.sliderHeader = this.filterElement.init()
-    
-    this.slider.appendChild(this.sliderHeader)
-    this.slider.appendChild(this.arrows)
-    this.slider.appendChild(this.sliderBody)
-
-  }
-
-  getTranslateX() {
-    let style = window.getComputedStyle(this.elementsWrapper);
-    let matrix = new WebKitCSSMatrix(style.transform);
-    return matrix.m41
-  }
-
-  isStatic(){
-    return (window.getComputedStyle(this.elementsWrapper).transition == 'all 0s ease 0s' || window.getComputedStyle(this.elementsWrapper).transition == '');
-  }
-
-  arrowTriggerRight(){
-    this.arrowRight.addEventListener('click',()=>{
-      if(this.isStatic()){
-        test(this.getTranslateX())
-        if(this.getTranslateX()>-1440){
-          let offset = ((this.getTranslateX()) - 1440)
-          this.elementsWrapper.style.transform = 'translate('+ offset +'px)'
-          this.elementsWrapper.style.transition = '.6s'
-          setTimeout(()=>{this.elementsWrapper.style.transition = '0s'}, 600)
-        }
-      }
-    })
-  }
-
-  arrowTriggerLeft(){
-    this.arrowLeft.addEventListener('click',()=>{
-      if(this.isStatic()){
-        test(this.getTranslateX())
-        if(this.getTranslateX() < 0){
-          let offset = ((this.getTranslateX()) + 1440)
-          this.elementsWrapper.style.transform = 'translate('+ offset +'px)'
-          this.elementsWrapper.style.transition = '.6s'
-          setTimeout(()=>{this.elementsWrapper.style.transition = '0s'}, 600)
-        }
-      }
-    })
-  }
-
-  filter(filter){
-    this.filterElement.switchFilter(filter)
-  }
-
-  renderElement(element){
-    this.elementsWrapper.appendChild(new Element(element).init())
-  }
-
-  renderSliderElement(parentSelector){
-    this.parent = document.body.querySelector(parentSelector)
-    this.parent.appendChild(this.slider);
-  }
-
-  init(){
-    this.elementsRaw.forEach(element => {
-      this.renderElement(element)
+window.onload = function() {
+    function da(){document.querySelector("#swiper2 > swiper-slide.mainContent.swiper-slide-visible.swiper-slide-active > spline-viewer").shadowRoot.querySelector("#logo").style = 'opacity:0'}
+    const swiperE1 = document.querySelector('#swiper1')
+    Object.assign(swiperE1, {
+    slidesPerView: 1,
+    breakpoints: {
+    0: {
+    loop: false,
+    direction: 'vertical',
+    slidesPerView: 4,
+    spaceBetween: 0,
+    },
+    640: {
+    loop: false,
+    direction: 'vertical',
+    slidesPerView: 4,
+    spaceBetween: 10,
+    },
+    768: {
+    loop: false,
+    direction: 'vertical',
+    slidesPerView: 4,
+    spaceBetween: 10,
+    },
+    1024: {
+    loop: false,
+    direction: 'horizontal',
+    slidesPerView: 4,
+    spaceBetween: 10,
+    },
+    1440: {
+    loop: false,
+    direction: 'horizontal',
+    slidesPerView: 5,
+    spaceBetween: 15,
+    },
+    },
     });
+    swiperE1.initialize();
 
-    this.filterElement.switchFilter(this.defaultFilter)
-    this.filterElement.calcWidth()
-    this.arrowTriggerRight()
-    this.arrowTriggerLeft()
-  }
-}
-
-class Element {
-  constructor(element){
-    this.element = element
-    this.type = element.type
-    this.image = createElementType('img','preview'); this.image.src = this.element.img;
-    this.name = createElementType('div','name'); this.name.innerHTML = element.name;
-    this.price = createElementType('div','price'); this.price.innerHTML = element.price;
-    this.wrapper = createElementType('div','elementWrapper')
-    this.wrapper.setAttribute('data-type',this.type)
-    this.createElement()
-  }
-  createElement(){
-    if(this.type === 'VOICETAGGING') {
-      this.topCard = createElementType('div','top')
-      this.bottomPrice = createElementType('div','bottom')
-
-      this.japanese = createElementType('div','japanese')
-      this.japanese.innerHTML = this.element.japanese
-
-      this.tags = createElementType('div','tags')
-      this.element.tags.forEach(tag => {this.tags.innerHTML += tag + '<br>'})
-
-      this.barcode = createElementType('div','barcode')
-
-      appendChilds(this.topCard,this.image,this.name,this.japanese,this.tags)
-      appendChilds(this.bottomPrice,this.price,this.barcode)
-
-    }
-    else if (this.type === 'MIXING'){
-      this.topCard = createElementType('div','top')
-      this.bottomPrice = createElementType('div','bottom')
-
-      this.japanese = createElementType('div','japanese')
-      this.japanese.innerHTML = this.element.japanese
-
-      this.tags = createElementType('div','tags')
-      this.element.tags.forEach(tag => {this.tags.innerHTML += tag + '<br>'})
-
-      this.barcode = createElementType('div','barcode')
-
-      appendChilds(this.topCard,this.image,this.name,this.japanese,this.tags)
-      appendChilds(this.bottomPrice,this.price,this.barcode)
-    }
-    else if (this.type === 'MASTERING'){
-      
-    }
-    else if (this.type === 'BEAT'){
-      
-    }
-    else {
-      //TODO undefiend type
-    }
-
-    appendChilds(this.wrapper,this.topCard,this.bottomPrice)
-
-  }
-  init(){
-    return this.wrapper;
-  }
-}
-
-class Filter {
-  constructor(query = '', list){
-    (query && query != undefined) ? this.query = query : this.query = ''
-
-    this.list = list
-
-    this.filterList = [
-      'VOICETAGGING',
-      'MIXING',
-      'MASTERING',
-      'BEATS',
-      'CONSULTATION',
-      'ALL'
-    ]
+    let swiperE2 = document.querySelector('#swiper2')
+    Object.assign(swiperE2, {
+    on: {
+        slideChange: function () {
+            const index_currentSlide = this.realIndex;
+            const currentSlide = this.slides[index_currentSlide]
+            console.log(currentSlide)
+        },
+    },
+    slidesPerView: 1,
+    breakpoints: {
+    0: {
+    touchMove: false,
+    accessibility: false,
+    swipe: false,
+    draggable: false,
+    direction: 'horizontal',
+    slidesPerView: 1,
+    spaceBetween: 0,
+    },
+    640: {
+    touchMove: false,
+    accessibility: false,
+    swipe: false,
+    draggable: false,
+    swipe: false,
+    draggable: false,
+    direction: 'horizontal',
+    slidesPerView: 1,
+    },
+    768: {
+    touchMove: false,
+    accessibility: false,
+    swipe: false,
+    draggable: false,
+    swipe: false,
+    draggable: false,
+    direction: 'horizontal',
+    slidesPerView: 1,
+    },
+    1024: {
+    touchMove: false,
+    accessibility: false,
+    swipe: false,
+    draggable: false,
+    direction: 'vertical',
+    slidesPerView: 1,
+    },
+    1440: {
+    touchMove: false,
+    accessibility: false,
+    swipe: false,
+    draggable: false,
+    direction: 'vertical',
+    slidesPerView: 1,
+    },
+    },
+    });
+    swiperE2.initialize();
     
-    this.element = createElementType('div','sliderHeader')
+    document.body.addEventListener("contextmenu", (e) => {e.preventDefault()});
 
-    this.filter = this.query == '' ? this.query : this.filterList[0]
-
-    this.filterElement = createElementType('div','filter')
-    this.filterElement.innerHTML = this.filter
-
-    this.queryElement = createElementType('div','query')
-    this.queryInput = createElementType('input','queryInput')
-    this.queryInput.setAttribute('placeholder','any keywords')
-    this.queryImage = createElementType('img','maginifyingGlass')
-    this.queryImage.src = 'assets/images/SVG/maginifyingGlass.svg';
-    appendChilds(this.queryElement,this.queryInput,this.queryImage)
-    appendChilds(this.element, this.filterElement,this.queryElement)
-    this.magnifyingGlass()
-    this.triggerInputByKeyboard()
-  }
-
-  calcWidth(){
-    let all = this.list.childNodes.length
-    let hidden = 0
-    this.list.childNodes.forEach(element => {if(element.getAttribute('style') == 'display: none;') hidden++})
-    this.list.style = 'width: '+ (all - hidden)*288 +"px;"
-  }
-
-  switchFilter(filter = 'VOICETAGGING') {
-    this.list.querySelectorAll('.elementWrapper').forEach(element => {element.getAttribute('data-type') == filter ? element.style = 'display: auto' : element.style = 'display: none'})
-  }
-
-  filtertags(filter = ''){
-    this.list.querySelectorAll('.elementWrapper').forEach(element => {
-      if (element.innerHTML.toLowerCase().includes(filter.toLowerCase()))
-        element.style = 'display: auto';
-      else
-        element.style = 'display: none';
-    })
-  }
-
-  magnifyingGlass(){
-    this.queryImage.addEventListener('click',()=>{
-      if(this.queryInput.value == '' || this.queryInput.value === undefined)
-        this.queryInput.focus()
-      else 
-        this.filtertags(this.queryInput.value)
-    })
-  }
-
-  triggerInputByKeyboard(){
-      this.queryInput.addEventListener('input',()=>{
-        if(this.queryInput.value != ''){
-          this.filtertags(this.queryInput.value)
-          this.calcWidth()
-        }
-        else
-        {
-          this.switchFilter(this.filter)
-          this.calcWidth()
-        }
-      })
-  }
-
-  init(){
-    return this.element
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  let mainSlider = new Slider('.sliderWrapper',elements);
-  mainSlider.filter('VOICETAGGING')
-
-});
+    da();}
